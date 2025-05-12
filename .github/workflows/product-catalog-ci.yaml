@@ -22,7 +22,7 @@ jobs:
     - name: Install golangci-lint
       run: |
         go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.2
-        echo "$(go env GOPATH)"/bin" >> $GITHUB_PATH
+        echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
     - name: Run golangci-linting
       run: |
