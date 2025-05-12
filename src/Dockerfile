@@ -1,19 +1,18 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
-
 FROM golang:1.22-alpine AS builder
 
 WORKDIR /usr/src/app/
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
-    --mount=type=bind,source=./src/product-catalog/go.sum,target=go.sum \
-    --mount=type=bind,source=./src/product-catalog/go.mod,target=go.mod \
+    --mount=type=bind,source=./src/go.sum,target=go.sum \
+    --mount=type=bind,source=./src/go.mod,target=go.mod \
     go mod download
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \
-    --mount=type=bind,rw,source=./src/product-catalog,target=. \
+    --mount=type=bind,rw,source=./src/,target=. \
     go build -ldflags "-s -w" -o /go/bin/product-catalog/ ./
 
 FROM alpine AS release
