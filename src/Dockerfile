@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/go/pkg/mod/ \
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \
-    --mount=type=bind,rw,source=./src/,target=. \
+    --mount=type=bind,rw,source=./src/.,target=. \
     go build -ldflags "-s -w" -o /go/bin/product-catalog/ ./
 
 FROM alpine AS release
