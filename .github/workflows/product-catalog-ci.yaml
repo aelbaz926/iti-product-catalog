@@ -54,7 +54,7 @@ jobs:
 
   Docker:
     runs-on: ubuntu-latest
-    needs: [Code-quality, Unit-test]
+    needs: Unit-test
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
@@ -78,7 +78,7 @@ jobs:
 
   Update-deployment:
     runs-on: ubuntu-latest
-    needs: [Code-quality, Unit-test]
+    needs: Docker
 
     steps:
     - name: Checkout Code
