@@ -15,6 +15,7 @@ To build the service binary, run:
 go build -o /go/bin/product-catalog/
 ```
 
+
 ## Docker Build
 
 From the root directory, run:
