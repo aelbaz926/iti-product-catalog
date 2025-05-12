@@ -88,7 +88,7 @@ jobs:
 
     - name: Update k8s deployment file
       run: |
-        sed -i "s|image: .*|image: ${{ vars.DOCKERHUB_USERNAME }}/product-catalog-service:${{ github.run_id }}" k8s/deployment.yaml
+        sed -i "s|image: .*|image: ${{ vars.DOCKERHUB_USERNAME }}/product-catalog-service:${{ github.run_id }}|" k8s/deployment.yaml
 
     - name: Commit and push changes
       run: |
